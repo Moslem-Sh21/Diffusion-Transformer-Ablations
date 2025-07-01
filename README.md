@@ -5,6 +5,21 @@
 It enables researchers to selectively disable (ablate) self-attention, cross-attention, and MLP submodules in any DiT block during inference, and to quantify their importance via FID and CLIP metrics.
 
 ---
+## 🧱 DiT Block Structure
+
+The internal structure of each Diffusion Transformer (DiT) block is illustrated in the diagrams below.
+
+As shown in the figure, each **DiT block** contains the following components:
+
+- **Multi-Head Self-Attention (MSA)**
+- **Multi-Head Cross-Attention (MCA)**
+- **Pointwise Feedforward Network (MLP)**
+
+<p align="center">
+  <img src="figures/Diagram.png" width="700" alt="DiT Architecture Diagram">
+</p>
+
+*Figure 1: The architecture of the Diffusion Transformer (DiT) block.*
 
 ## Features
 
