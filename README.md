@@ -81,7 +81,7 @@ Ablation results for the MLP layers reveal a consistent **U-shaped importance pa
 
 Ablation of MSA layers shows similar patterns:
 
-- **Early & late layers:** Highly sensitive. Removing these layers significantly **degrades generation quality**, confirming their importance for **semantic coherence** and **long-range context modeling**.
+- **Late layers:** Highly sensitive. Removing these layers significantly **degrades generation quality**, confirming their importance for **semantic coherence** and **long-range context modeling**.
 - **Middle layers:** These show **relatively minimal effect** when ablated, implying some **redundancy**.
 
 ### 🔹 FID Degradation for MSA Layers
@@ -90,7 +90,7 @@ Ablation of MSA layers shows similar patterns:
   <img src="figures/fid_individual_plot.png" width="600" alt="FID degradation for MSA layers">
 </p>
 
-*Figure 3: FID increases dramatically when early or final MSA layers are ablated.*
+*Figure 3: FID increases dramatically when final MSA layers are ablated.*
 
 ### 🔹 CLIP Similarity for MSA Layers
 
@@ -98,7 +98,7 @@ Ablation of MSA layers shows similar patterns:
   <img src="figures/clip_individual_plot.png" width="600" alt="CLIP similarity for MSA layers">
 </p>
 
-*Figure 4: CLIP similarity is most affected by early and late MSA layer ablation.*
+*Figure 4: CLIP similarity is most affected by late MSA layer ablation.*
 
 ---
 
@@ -128,10 +128,35 @@ We also evaluate **cumulative ablation**, where multiple MSA layers are sequenti
 
 ---
 
+## 🧭 MCA (Multi-Head Cross-Attention) Layers
+
+Ablation of MCA layers shows similar patterns:
+
+- **Early and late layers:** Highly sensitive. Removing these layers significantly **degrades generation quality**, confirming their importance for **semantic coherence** and **long-range context modeling**.
+- **Middle layers:** These show **relatively minimal effect** when ablated, implying some **redundancy**.
+
+### 🔹 FID Degradation for MCA Layers
+
+<p align="center">
+  <img src="figures/fid_individual_plot_MCA.png" width="600" alt="FID degradation for MSA layers">
+</p>
+
+*Figure 3: FID increases dramatically when early layers and last MCA layer are ablated.*
+
+### 🔹 CLIP Similarity for MCA Layers
+
+<p align="center">
+  <img src="figures/clip_individual_plot_MCA.png" width="600" alt="CLIP similarity for MSA layers">
+</p>
+
+*Figure 4: CLIP similarity is most affected by early layers and last MCA layer ablation.*
+
+---
+
 ## ✅ Summary
 
-- Both **MLP** and **MSA** layers show **non-uniform importance**.
-- **Early and late layers** in both components are **critical** for performance.
+- In all **MLP**, **MSA**, and **MCA** layers show **non-uniform importance**.
+- **Early and late layers** in both **MLP** and **MCA**components are **critical** for performance.
 - **Middle layers** tend to be **redundant**, offering opportunities for **model simplification** or **pruning** without significant performance drop.
 
 This analysis informs both **model interpretability** and **optimization** strategies for efficient deployment.
